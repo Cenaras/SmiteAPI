@@ -41,9 +41,11 @@ function search()
 
       $("#searchButton").click(function()
     {
-        console.log("Searching After Player!")
+        console.log($("#searchField").val());
     });
 
 }
+
+
 
 
