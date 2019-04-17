@@ -19,29 +19,34 @@ li a
     text-align: center;
     padding: 14px 25px 16px;
     text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
 }
 
 /* Change the link color to #111 (black) on hover */
 li a:hover 
 {
     background-color: rgb(59, 95, 141);
+    color: white;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
 }
 
-#background 
+body 
 {
-    padding: 18em;
     background-image: url("background.jpg");
-    background-color: #cccccc;
-    object-fit: cover;
-    filter: grayscale(0%);   
+    background-color: #cccccc;    
+    filter: grayscale(30%);
+    background-repeat: no-repeat;
+    
 }
 
-.searchField
+.searchArea
 {
+    padding: 20%;
     text-align: center;       
 }
-
-
 
 /* SEARCH INPUT AREA CSS */
 form.searchArea input[type = text]
@@ -70,5 +75,25 @@ form.searchArea button
     cursor: pointer;
   }
 
+footer 
+{
+    background-color: #1b1c1d;
+    color: #fff;
+    overflow: hidden;
+}
+
+footer .container
+{
+    padding: 5% 0;
+}
+
+.container
+{
+    position: relative;
+    max-width: 1160px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1em;
+}
 
 
