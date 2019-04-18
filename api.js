@@ -8,7 +8,7 @@ function convert(n)
 
 var devID = "3129";
 var authKey = "AD6065793B6F4DD3BDA1DCF6FEB65E79";
-var session;
+var sessionSignature;
 
 function getTimestamp()
 {
@@ -26,6 +26,7 @@ function getTimestamp()
 $(document).ready(function ()
 {
     search();
+    
 })
 
 function search()
@@ -39,8 +40,9 @@ function search()
         }
       });
 
-      $("#searchButton").click(function()
+    $("#searchButton").click(function()
     {
+        console.log($.MD5("test"));
         console.log($("#searchField").val());
     });
 
