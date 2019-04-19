@@ -45,7 +45,7 @@ body
 .searchArea
 {
     padding: 20%;
-    text-align: center;       
+    text-align: center;      
 }
 
 /* SEARCH INPUT AREA CSS */
@@ -55,8 +55,9 @@ form.searchArea input[type = text]
     padding: 10px;
     font-size: 17px;
     border: 1px solid grey;
-    float: center;
     width: 70%;
+    float: center;
+
     background: #f1f1f1;
 }
 
@@ -94,6 +95,28 @@ footer .container
     margin-left: auto;
     margin-right: auto;
     padding: 0 1em;
+    align-items: center;
+}
+.columns 
+{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: .4rem;
+    margin-right: .4rem;
 }
 
-
+.playerbox
+{
+    display: block;
+    margin-left: 10em;
+    width: 225px;
+    height: 225px;
+    border: 1px solid gray;
+    align-items: center;
+}
+.dividers 
+{
+    border-top: .05rem solid #9e9e9e;
+    height: .05rem;
+    margin: .4rem 0;
+}
