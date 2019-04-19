@@ -1,4 +1,6 @@
 var currentDate = new Date();
+var lastSearchedPlayer = "Test";
+
 
 function convert(n)
 {
@@ -25,7 +27,10 @@ function getTimestamp()
 
 $(document).ready(function ()
 {
+    
+    console.log(localStorage.getItem('lastSearchedPlayer'));
     search();
+    
     
 })
 
@@ -43,10 +48,14 @@ function search()
     $("#searchButton").click(function()
     {
         console.log($.MD5("test"));
-        console.log($("#searchField").val());
+        //console.log($("#searchField").val());
+        localStorage.setItem('lastSearchedPlayer', $("#searchField").val());
+        window.location.replace("playerstats.html")
+    
     });
-
 }
+
+
 
 
 
