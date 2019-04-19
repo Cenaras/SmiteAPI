@@ -27,7 +27,8 @@ function getTimestamp()
 
 $(document).ready(function ()
 {
-    
+    $(".playerBoxName").append(localStorage.getItem('lastSearchedPlayer'));
+    $(".playerClanName").append("TestClan");
     console.log(localStorage.getItem('lastSearchedPlayer'));
     search();
     
