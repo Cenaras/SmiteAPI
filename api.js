@@ -1,16 +1,15 @@
 var currentDate = new Date();
-var lastSearchedPlayer = "Test";
+var lastSearchedPlayer;
 
+var devID = "3129";
+var authKey = "AD6065793B6F4DD3BDA1DCF6FEB65E79";
+var sessionSignature;
 
 function convert(n)
 {
     if (n < 10) return '0' + n;
     else return n;
 }
-
-var devID = "3129";
-var authKey = "AD6065793B6F4DD3BDA1DCF6FEB65E79";
-var sessionSignature;
 
 function getTimestamp()
 {
@@ -27,6 +26,11 @@ function getTimestamp()
 
 $(document).ready(function ()
 {
+    console.log(getSessionSignature());
+    establishSession();
+
+
+    //localStorage.setItem('sessionSignature', getSessionSignature().body)
     $(".playerBoxName").append(localStorage.getItem('lastSearchedPlayer'));
     $(".playerClanName").append("TestClan");
     console.log(localStorage.getItem('lastSearchedPlayer'));
@@ -56,7 +60,31 @@ function search()
     });
 }
 
+function establishSession()
+{
+    $.ajax
+    ({
+        url: "http://api.openweathermap.org/data/2.5/weather?id=2172797",
+        type: "GET",
+        dataType: "jsonp",
+        success: function(data)
+        {
+            console.log("We did it!");
+        },
+        error: function()
+        {
+            console.log("Error");
+        }
+    })
+}
 
+//The URL called, to retrieve a session ID
+function getSessionSignature()
+{
+    var timestamp = getTimestamp();
+    return 'http://api.smitegame.com/smiteapi.svc/createsessionJson/' + 
+        devID + '/' + $.MD5(devID + 'createsession' + authKey + timestamp) + '/' + timestamp;
+}
 
 
 
