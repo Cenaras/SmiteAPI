@@ -64,9 +64,11 @@ function establishSession()
 {
     $.ajax
     ({
-        url: "http://api.openweathermap.org/data/2.5/weather?id=2172797",
+        //http://api.openweathermap.org/data/2.5/weather?id=2172797&appid=3e9124630ad1dffb2a2c1e4cee2a2f05
+        url: getSessionSignature(),
         type: "GET",
         dataType: "jsonp",
+
         success: function(data)
         {
             console.log("We did it!");
