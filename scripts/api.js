@@ -55,25 +55,26 @@ function search()
         console.log($.MD5("test"));
         //console.log($("#searchField").val());
         localStorage.setItem('lastSearchedPlayer', $("#searchField").val());
-        window.location.replace("playerstats.html")
+        window.location.replace("playerstats.html");
     
     });
 }
 //http://restlet.com/company/blog/2016/09/27/how-to-fix-cors-problems/
 //var testUrl = "http://api.openweathermap.org/data/2.5/weather?q=London&appid=3e9124630ad1dffb2a2c1e4cee2a2f05"
 
-var session_id = "56B5F6726BEE437D9F19D93FCABE89D7"
-var testUrl = "http://api.smitegame.com/smiteapi.svc/"
+//var session_id = "56B5F6726BEE437D9F19D93FCABE89D7"
+//var testUrl = "http://api.smitegame.com/smiteapi.svc/"
 function establishSession()
 {
-    //var testUrl = getSessionSignature();
+    var testUrl = getSessionSignature();
     $.ajax
     ({
         
         url: testUrl,
         type: "GET",
-        dataType: "jsonp",
+        dataType: "json",
         contentType: 'application/json',
+        mode: "no-cors",
 
         success: function(data)
         {
