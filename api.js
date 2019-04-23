@@ -59,15 +59,21 @@ function search()
     
     });
 }
+//http://restlet.com/company/blog/2016/09/27/how-to-fix-cors-problems/
+//var testUrl = "http://api.openweathermap.org/data/2.5/weather?q=London&appid=3e9124630ad1dffb2a2c1e4cee2a2f05"
 
+var session_id = "56B5F6726BEE437D9F19D93FCABE89D7"
+var testUrl = "http://api.smitegame.com/smiteapi.svc/"
 function establishSession()
 {
+    //var testUrl = getSessionSignature();
     $.ajax
     ({
-        //http://api.openweathermap.org/data/2.5/weather?id=2172797&appid=3e9124630ad1dffb2a2c1e4cee2a2f05
-        url: getSessionSignature(),
+        
+        url: testUrl,
         type: "GET",
         dataType: "jsonp",
+        contentType: 'application/json',
 
         success: function(data)
         {
