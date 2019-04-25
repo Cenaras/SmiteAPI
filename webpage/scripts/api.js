@@ -1,6 +1,8 @@
 var currentDate = new Date();
 var lastSearchedPlayerName;
-var lastSearchedPlayerClan
+var lastSearchedPlayerClan;
+
+
 
 var devID = "3129";
 var authKey = "AD6065793B6F4DD3BDA1DCF6FEB65E79";
@@ -27,19 +29,11 @@ function getTimestamp()
 
 $(document).ready(function ()
 {
-    console.log(getSessionSignature());
-    
     establishSession();
-    console.log(localStorage.getItem('sessionSignature'));
     
-    $(".playerBoxName").append(localStorage.getItem('lastSearchedPlayerName'));
-    $(".playerClanName").append("TestClan");
-
-
-    console.log(localStorage.getItem('lastSearchedPlayerName'));
+    $(".playerBoxName").html(localStorage.getItem('lastSearchedPlayerName'));
+    $(".playerClanName").html(localStorage.getItem('lastSearchedPlayerClan'));
     search();
-    
-    
 })
 
 function search()
@@ -55,14 +49,12 @@ function search()
 
     $("#searchButton").click(function()
     {
-        //console.log($("#searchField").val());
         localStorage.setItem('lastSearchedPlayerName', $("#searchField").val());
         
- 
-
-        window.location.replace("playerstats.html");
+        console.log("Search Field: " + $("#searchField").val());
+        getPlayer($("#searchField").val());
+        //window.location.replace("playerstats.html");
     
-        //Call GetPlayer
 
     });
 }
@@ -104,14 +96,33 @@ function getSessionSignature()
 function apiCallSignature(method) 
 {
     var timestamp = getTimestamp();
-    return 'http://api.smitegame.com/smiteapi.svc/' + method + 'Json/' + devID + '/' + $.MD5(devID + method + authKey + timestamp) + '/' + sessionSignature + '/' + timestamp;
+    return 'http://api.smitegame.com/smiteapi.svc/' + method + 'Json/' + devID + '/' + $.MD5(devID + method + authKey + timestamp) + '/' + localStorage.getItem('sessionSignature') + '/' + timestamp;
 }
 
 
 function getPlayer(player)
 {
-    var url = apiCallSignature("getplayer") + "/" + player
-    console.log(url)
+    var callUrl = apiCallSignature("getplayer") + "/" + player
+    $.ajax
+    ({
+        url: callUrl,
+        type: "GET",
+        dataType: "json",
+        contentType: 'application/json',
+
+        success: function(data)
+        {
+            console.log(data);
+            console.log("Test: " + data[0].hz_player_name);
+            console.log(data[0].Team_Name);
+            localStorage.setItem('lastSearchedPlayerClan', data[0].Team_Name)
+            
+        },
+        error: function()
+        {
+            console.log("Error");
+        }
+    })
 }
 
 
